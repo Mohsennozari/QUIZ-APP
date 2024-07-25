@@ -1,18 +1,26 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: "Lexend";
     box-sizing: border-box;
 }
 
+// <uniquifier>: Use a unique and descriptive class name
+.lexend-uniquifier> {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
-    background: rgb(27, 24, 75);
+    background: rgb(22, 20, 51);
 }
 
 .app {
     background: rgb(255, 255, 255);
     width: 90%;
-    max-width: 600px;
+    max-width: 800px;
     margin: 100px auto 0;
     border-radius: 10px;
     padding: 30px;
@@ -21,9 +29,10 @@ body {
 .app h1 {
     font-size: 25px;
     font-family: 25px;
-    color: rgb(8, 143, 143);
+    color: rgb(20, 14, 54);
     font-weight: 600;
     border-bottom: 1px solid #333;
+    padding-bottom: 10px;
 }
 
 .quiz {
@@ -32,26 +41,26 @@ body {
 
 .quiz h2 {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     color: rgb(0, 0, 0);
 }
 
 .btn {
-    background: #333;
-    color: aqua;
-    font-weight: 600;
+    background: #dcaf0c;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
     width: 100%;
     border: 1px solid black;
     padding: 10px;
     margin: 10px 0;
     text-align: left;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: all 0.3s;
 }
 
 .btn:hover:not([disabled]) {
-    background: #e07676;
+    background: #37aeda;
     color: rgb(255, 255, 255);
 }
 
@@ -60,7 +69,7 @@ body {
 }
 
 #next-btn {
-    background: #333;
+    background: #000000;
     color: aliceblue;
     font-weight: 600;
     width: 150px;
@@ -73,9 +82,9 @@ body {
 }
 
 .correct {
-    background: #31c005;
+    background: #47ff91;
 }
 
 .incorrect {
-    background: #e90707;
+    background: #fc6565;
 }

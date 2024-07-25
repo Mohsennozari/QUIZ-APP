@@ -1,43 +1,42 @@
 const questions = [{
-        question: "wich is larget animal in the world?",
+        question: "Which is the largest animal in the world?",
         answers: [
-
-            { text: "shark", correct: false },
-            { text: "blue whale", correct: true },
-            { text: "Elephent", correct: false },
-            { text: "giraffe", correct: false },
+            { text: "Shark", correct: false },
+            { text: "Blue Whale", correct: true },
+            { text: "Elephant", correct: false },
+            { text: "Giraffe", correct: false },
         ]
-    }, {
-        question: "wich is larget in the world?",
+    },
+    {
+        question: "Which is the largest mammal?",
         answers: [
-
-            { text: "shark", correct: false },
-            { text: "blue whale", correct: true },
-            { text: "Elephent", correct: false },
-            { text: "giraffe", correct: false },
+            { text: "Shark", correct: false },
+            { text: "Blue Whale", correct: true },
+            { text: "Elephant", correct: false },
+            { text: "Giraffe", correct: false },
         ]
-    }, {
-        question: "wich is larget in the world?",
+    },
+    {
+        question: "Which is the largest land animal?",
         answers: [
-
-            { text: "shark", correct: false },
-            { text: "blue whale", correct: true },
-            { text: "Elephent", correct: false },
-            { text: "giraffe", correct: false },
+            { text: "Shark", correct: false },
+            { text: "Blue Whale", correct: false },
+            { text: "Elephant", correct: true },
+            { text: "Giraffe", correct: false },
         ]
-    }, {
-        question: "wich is larget in the world?",
+    },
+    {
+        question: "Which is the tallest animal?",
         answers: [
-
-            { text: "shark", correct: false },
-            { text: "blue whale", correct: true },
-            { text: "Elephent", correct: false },
-            { text: "giraffe", correct: false },
+            { text: "Shark", correct: false },
+            { text: "Blue Whale", correct: false },
+            { text: "Elephant", correct: false },
+            { text: "Giraffe", correct: true },
         ]
     }
-
 ];
-const questionElememt = document.getElementById("question");
+
+const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
 
@@ -49,15 +48,13 @@ function startQuiz() {
     score = 0;
     nextButton.innerHTML = "Next";
     showQuestion();
-
 }
 
 function showQuestion() {
-    resetstate();
+    resetState();
     let currentQuestion = questions[currentQuestionIndex];
-    let questionNO = currentQuestionIndex + 1;
-    questionElememt.innerHTML = questionNO + "." + currentQuestion.question;
-
+    let questionNo = currentQuestionIndex + 1;
+    questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
 
     currentQuestion.answers.forEach(answer => {
         const button = document.createElement("button");
@@ -67,43 +64,39 @@ function showQuestion() {
         if (answer.correct) {
             button.dataset.correct = answer.correct;
         }
-        button.addEventListener("clik", selectAnswer);
-
-
+        button.addEventListener("click", selectAnswer);
     });
 }
 
-function resetstate() {
+function resetState() {
     nextButton.style.display = "none";
     while (answerButtons.firstChild) {
-        answerButtons.removeChild(answerButtons.firstChild)
+        answerButtons.removeChild(answerButtons.firstChild);
     }
 }
 
 function selectAnswer(e) {
     const selectedBtn = e.target;
-    const isCorrect = selectedBtn.datadet.correct === "true";
+    const isCorrect = selectedBtn.dataset.correct === "true";
     if (isCorrect) {
         selectedBtn.classList.add("correct");
         score++;
-
     } else {
         selectedBtn.classList.add("incorrect");
     }
     Array.from(answerButtons.children).forEach(button => {
-        if (button.datadet.correct === "true") {
+        if (button.dataset.correct === "true") {
             button.classList.add("correct");
         }
         button.disabled = true;
     });
-    nextButton.style.display = "block"
-
+    nextButton.style.display = "block";
 }
 
 function showScore() {
-    resetstate();
-    questionElememt.innerHTML = `you score ${score} out of ${questions.length}!`;
-    nextButton.innerHTML = "play Again";
+    resetState();
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
+    nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
 }
 
@@ -119,8 +112,10 @@ function handleNextButton() {
 nextButton.addEventListener("click", () => {
     if (currentQuestionIndex < questions.length) {
         handleNextButton();
-
     } else {
         startQuiz();
     }
 });
+
+// Initialize the quiz
+startQuiz();
