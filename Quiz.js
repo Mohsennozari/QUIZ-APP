@@ -1,5 +1,5 @@
 const questions = [{
-        question: "wich is larget animal in the world?"
+        question: "wich is larget animal in the world?",
         answers: [
 
             { text: "shark", correct: false },
@@ -8,7 +8,7 @@ const questions = [{
             { text: "giraffe", correct: false },
         ]
     }, {
-        question: "wich is larget in the world?"
+        question: "wich is larget in the world?",
         answers: [
 
             { text: "shark", correct: false },
@@ -17,7 +17,7 @@ const questions = [{
             { text: "giraffe", correct: false },
         ]
     }, {
-        question: "wich is larget in the world?"
+        question: "wich is larget in the world?",
         answers: [
 
             { text: "shark", correct: false },
@@ -26,7 +26,7 @@ const questions = [{
             { text: "giraffe", correct: false },
         ]
     }, {
-        question: "wich is larget in the world?"
+        question: "wich is larget in the world?",
         answers: [
 
             { text: "shark", correct: false },
@@ -47,13 +47,13 @@ let score = 0;
 function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
-    nextButton.innerHTML = "next";
+    nextButton.innerHTML = "Next";
     showQuestion();
 
 }
 
 function showQuestion() {
-    resetState();
+    resetstate();
     let currentQuestion = questions[currentQuestionIndex];
     let questionNO = currentQuestionIndex + 1;
     questionElememt.innerHTML = questionNO + "." + currentQuestion.question;
@@ -81,7 +81,7 @@ function resetstate() {
 }
 
 function selectAnswer(e) {
-    const selectedbtn = e.target;
+    const selectedBtn = e.target;
     const isCorrect = selectedBtn.datadet.correct === "true";
     if (isCorrect) {
         selectedBtn.classList.add("correct");
@@ -101,53 +101,26 @@ function selectAnswer(e) {
 }
 
 function showScore() {
-    resetState();
+    resetstate();
     questionElememt.innerHTML = `you score ${score} out of ${questions.length}!`;
-    nextButton.innerHTML = "play Again"
-    nextButton.style.display = "block"
+    nextButton.innerHTML = "play Again";
+    nextButton.style.display = "block";
 }
 
 function handleNextButton() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
-        questions();
+        showQuestion();
     } else {
-        showscore();
+        showScore();
     }
 }
 
-nextButton.addEventListener("click"), () => {
+nextButton.addEventListener("click", () => {
     if (currentQuestionIndex < questions.length) {
         handleNextButton();
 
     } else {
         startQuiz();
     }
-};
-////////////////////////////////////////////////////
-// function showscore() {
-//     resetstart();
-//     questionElememt, innerHTML = `you scored ${score}out of ${
-//         questions.length}!`;
-//     nextButton.innerHTML = "play Again";
-//     nextButton.style.display = "block"
-
-// }
-
-// function handleNextButton() {
-//     currentQuestionIndex++;
-//     if (currentQuestionIndex < questions.length) {
-//         showQuestion();
-
-//     } else {
-//         showScore();
-//     }
-// }
-// nextButton.addEventListener("click", () => {
-//     if (currentQuestionIndex < questions.length) {
-//         handleNextButton();
-//     } else {
-//         startQuiz();
-//     }
-// })
-// startQuiz();
+});
